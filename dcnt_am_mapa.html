@@ -1,0 +1,56 @@
+<html lang="pt-BR">
+
+<head>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta charset="UTF-8">
+    <title>Mapa AMCharts.js</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link href="css/painel.css" rel="stylesheet">
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/maps.js"></script>
+    <script src="dados/regioes_saude_rj.js"></script>
+</head>
+
+<body>
+    <h2>Doenças Crônicas Não Transmissíveis (DCNT)</h2>
+    <div id='graficos'>
+        <article>
+            <h3>Mortalidade prematura pelas principais Doenças Crônicas Não Transmissíveis (DCNT)</h3>
+            <div id='grafico7'></div>
+        </article>
+        <script>
+            am4core.ready(function () {
+                // Create map instance
+                var map = am4core.create("grafico7", am4maps.MapChart);
+                map.disableCache = true
+
+                // Set map definition
+                //map.geodataSource.url = "dados/regioes_saude_rj.json";
+                map.geodata = regioes;
+
+                // Set projection
+                map.projection = new am4maps.projections.Mercator();
+
+                // Create map polygon series
+                var polygonSeries = new am4maps.MapPolygonSeries();
+                polygonSeries.useGeodata = true;
+                map.series.push(polygonSeries);
+
+                // Configure series
+                var polygonTemplate = polygonSeries.mapPolygons.template;
+                polygonTemplate.tooltipText = "{name}: {value}";
+                polygonTemplate.fill = am4core.color("#74B266");
+
+                // Create hover state and set alternative fill color
+                var hs = polygonTemplate.states.create("hover");
+                hs.properties.fill = am4core.color("#367B25");
+
+                map.zoomControl = new am4maps.ZoomControl();
+
+            }); // end am4core.ready()
+        </script>
+</body>
+
+</html>
