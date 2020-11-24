@@ -1,0 +1,28 @@
+﻿body {
+    font-family:sans-serif;
+    background: #FFF;
+    color:#333;
+}
+h1,h2,h3 {
+    text-align: center;
+}
+#graficos > article {
+    width:100%;
+    max-width: 1024px;
+    margin:0 auto 50px;
+    min-height:400px;
+}
+#graficos > article > canvas,
+#graficos > article > div {
+    box-sizing: border-box;
+    width: calc(100% - 10px);
+    height: calc((100vw - 10px) * 0.5625);
+    margin: 0 auto;
+}
+
+@media (max-width:640px) {
+    .chart50 {
+        display: block;
+        width: 100%
+    }
+}
