@@ -11,6 +11,8 @@
     <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
     <script src="https://cdn.amcharts.com/lib/4/maps.js"></script>
     <script src="dados/regioes_saude_rj.js"></script>
+    <!-- Para carregar uma versão de mapa que funciona, comente a linha acima e descomente a abaixo-->
+    <!-- <script src="dados/RJ.js"></script> -->
 </head>
 
 <body>
@@ -27,6 +29,9 @@
                 map.disableCache = true
 
                 // Set map definition
+                // map.geodata = am4geodata_RJ;
+                // map.geodataSource.url = "dados/RJ.json";
+                
                 //map.geodataSource.url = "dados/regioes_saude_rj.json";
                 map.geodata = regioes;
 
